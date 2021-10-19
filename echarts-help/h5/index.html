@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./echarts.mini.js"></script>
+  <title>index</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script src="index.js"></script>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      const myChart = echarts.init(document.getElementById('main'));
+      const tmp = {
+        title: 'EcCharts Demo',
+        dimension: [ // 维度数据
+          {key: '销量', type: 'bar',color: '#F35331'},
+          {key: '销量1', type: 'line', color: '#2499F8'},
+          {key: '销量2', type: 'bar', color: '#3DF098'},
+          // {key: '销量3', type: 'bar', color: 'green'},
+        ],
+        dataset: [
+          {
+            xAxisName: '4月',
+            data: [
+              {key: '销量', value: 8, color: 'black'},
+              {key: '销量1', value: 20},
+              {key: '销量2', value: 22},
+            ]
+          },
+          {
+            xAxisName: '5月',
+            data: [
+              {key: '销量', value: 10},
+              {key: '销量1', value: 20},
+              {key: '销量2', value: 22},
+            ]
+          },
+          {
+            xAxisName: '6月',
+            data: [
+              {key: '销量', value: 10},
+              {key: '销量1', value: 20},
+              {key: '销量2', value: 22},
+            ]
+          },
+          {
+            xAxisName: '7月',
+            data: [
+              {key: '销量', value: 10},
+              {key: '销量1', value: 20},
+              {key: '销量2', value: 30},
+            ]
+          },
+        ],
+        other: {}
+      }
+      // 指定图表的配置项和数据
+      // const option = {
+      //     title: {
+      //         text: 'ECharts 入门示例'
+      //     },
+      //     tooltip: {},
+      //     legend: {
+      //         data:['销量']
+      //     },
+      //     xAxis: {
+      //         data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+      //     },
+      //     yAxis: {},
+      //     series: [{
+      //         name: '销量',
+      //         type: 'bar',
+      //         data: [5, 20, 36, 10, 10, 20]
+      //     }]
+      // };
+      const option = new EchartHelp(tmp).genLineOrBarConf()
+      console.log('debug1');
+      console.log(option);
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+</body>
+</html>
